@@ -1,11 +1,13 @@
 import re
 inputpath = "/Users/pierr/Desktop/Funny/adventofcode2022/day5/input.txt"
 crate = "/Users/pierr/Desktop/Funny/adventofcode2022/day5/crate.txt"
-# {letter: index for index, letter in enumerate(
-#     list(string.ascii_letters), 1)}
 input = open(inputpath, "r")
+crateinput = open(crate, "r")
 list_input = [re.findall(r'\d+', command)
               for command in input.read().split("\n")]
+test = [re.findall(r'\d|[A-Z]|    ', command)
+        for command in crateinput.read().split("\n")]
+print(test)
 crates = {
     1: ['F', 'T', 'C', 'L', 'R', 'P', 'G', 'Q'],
     2: ['N', 'Q', 'H', 'W', 'R', 'F', 'S', 'J'],
