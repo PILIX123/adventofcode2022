@@ -16,5 +16,10 @@ IM SOOOOOO DUMB, i was forgettting to update all the parents folder so i was lik
 
 #### day 8
 
-part one
+##### part one
+
 jeez im stupid, i was forgetting to add all the exterior trees, and remove one character to account for the \n i kept in there as indicator
+
+##### part two
+
+it was way easier the only thing that got me stuck was the fact that i wasnt reseting my values to calculate the scenic score at the right place
