@@ -18,6 +18,8 @@ def part_one():
                 nextTree[inde].extend([eval(tree[inde])
                                       for tree in map[index+2:]])
             continue
+        currentPreviousTrees = []
+        currentNextTrees = [eval(tree) for tree in map[index][1:-1]]
         if (map[index] == map[-1]):
             total += len(map[index]) - 1
             continue
@@ -26,27 +28,41 @@ def part_one():
                 continue
             if num == 0:
                 nextTree[num+1].pop(0)
+                currentNextTrees.pop(0)
 
             if (num == 0 or line[num+1] == "\n"):
                 previousTree[num].append(eval(char))
+                currentPreviousTrees.append(eval(char))
                 total += 1
                 continue
             previousTrees = previousTree[num]
-            #previousTrees = [eval(tree[num]) for tree in map[:index]]
             nextTrees = nextTree[num]
-            currentPreviousTrees = [eval(num) for num in list(line[:num])]
-            currentNextTrees = [eval(num) for num in list(line[num+1:-1])]
             if eval(char) > max(previousTrees) or eval(char) > max(nextTrees) or eval(char) > max(currentNextTrees) or eval(char) > max(currentPreviousTrees):
                 total += 1
             previousTree[num].append(eval(char))
             nextTree[num+1].pop(0)
+            currentNextTrees.pop(0)
+            currentPreviousTrees.append(eval(char))
 
     return (total)
 
 
 def part_two():
     scenicScore = []
+    previousTree = []
+    nextTree = []
+
     for index, line in enumerate(map):
+        if index == 0:
+            previousTree.extend([[int(x) for x in tree]
+                                for tree in map[index][:-1]])
+            nextTree.extend([[int(x) for x in tree]
+                            for tree in map[index+1][:-1]])
+            for inde, _ in enumerate(nextTree):
+                nextTree[inde].extend([eval(tree[inde])
+                                       for tree in map[index+2:]])
+        currentPreviousTrees = []
+        currentNextTrees = [eval(tree) for tree in map[index][1:-1]]
 
         if (map[index] == map[-1] or index == 0):
             continue
@@ -55,13 +71,20 @@ def part_two():
             rightVal = 0
             topVal = 0
             downVal = 0
-
-            if (num == 0 or treeLine == "\n" or line[num+1] == "\n"):
+            if treeLine == "\n":
                 continue
-            previousTrees = [eval(tree[num]) for tree in map[:index]]
-            nextTrees = [eval(tree[num]) for tree in map[index+1:]]
-            currentPreviousTrees = [eval(num) for num in list(line[:num])]
-            currentNextTrees = [eval(num) for num in list(line[num+1:-1])]
+            if num == 0:
+                nextTree[num+1].pop(0)
+                currentNextTrees.pop(0)
+
+            if (num == 0 or line[num+1] == "\n"):
+                previousTree[num].append(eval(treeLine))
+                currentPreviousTrees.append(eval(treeLine))
+
+                continue
+            #previousTrees = [eval(tree[num]) for tree in map[:index]]
+            previousTrees = previousTree[num]
+            nextTrees = nextTree[num]
             previousTrees.reverse()
             currentPreviousTrees.reverse()
             for trees in currentPreviousTrees:
@@ -85,6 +108,13 @@ def part_two():
                     break
                 rightVal += 1
             scenicScore.append(leftVal*rightVal*topVal*downVal)
+            previousTrees.reverse()
+            currentPreviousTrees.reverse()
+            previousTree[num].append(eval(treeLine))
+            nextTree[num+1].pop(0)
+            currentNextTrees.pop(0)
+            currentPreviousTrees.append(eval(treeLine))
+
     return max(scenicScore)
 
 
