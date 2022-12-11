@@ -23,3 +23,7 @@ jeez im stupid, i was forgetting to add all the exterior trees, and remove one c
 ##### part two
 
 it was way easier the only thing that got me stuck was the fact that i wasnt reseting my values to calculate the scenic score at the right place
+
+#### day 9
+
+i couldnt do it on the day it game out, so yeah taking my chance on day 10
