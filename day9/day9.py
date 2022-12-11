@@ -11,6 +11,7 @@ if diagonal, direction next to tail, tail doesnt move
 """
 
 visited = {}
+val = str((1, 2))
 
 
 class Head():
@@ -19,7 +20,6 @@ class Head():
         self.x = 0
 
     def move(self, direction, movement):
-        idea[self.y][self.x] == ""
         match direction:
             case "U":
                 self.y += movement
@@ -29,7 +29,6 @@ class Head():
                 self.x -= movement
             case "R":
                 self.x += movement
-        idea[self.y][self.x] = "H"
 
 
 class Tail():
@@ -37,27 +36,38 @@ class Tail():
         self.x = 0
         self.y = 0
 
-    def move(self, direction, movement, head: Head):
+    def move(self, direction, movement, length, head: Head):
         if head.x == self.x:
-            if self.y > head.y:
+            if self.y > head.y+length:
                 if direction != "D":
                     return
-                self.x -= movement
-            elif self.y < head.y:
+                self.y -= movement
+            elif self.y < head.y-length:
                 if direction != "U":
                     return
-                self.x += movement
-            else:
-                return
+                self.y += movement
+            coordinates = {str((self.x, self.y)): "visited"}
+            visited.update(coordinates)
+            return
         if head.y == self.y:
-            if self.x > head.x:
+            if self.x > head.x+length:
                 if direction != "L":
                     return
                 self.x -= movement
+            elif self.x < head.x-length:
+                if direction != "R":
+                    return
+                self.x += movement
+            coordinates = {str((self.x, self.y)): "visited"}
+            visited.update(coordinates)
+            return
 
 
 head = Head()
+tail = Tail()
 
-for index, instruction in enumerate(data):
-    if (instruction[0] == data[index+1][0]):
-        Head.move(head, instruction[0], int(instruction[1]))
+for instruction in data:
+    for x in range(int(instruction[1])):
+        head.move(instruction[0], x)
+        tail.move(instruction[0], x, 1, head)
+print(len(visited))
