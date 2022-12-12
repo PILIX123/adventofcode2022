@@ -31,3 +31,4 @@ i couldnt do it on the day it game out, so yeah taking my chance on day 10
 ##### part one
 
 for some reason programming it in a OOP way makes sense to me...
+ok back at it we gonna try to make it work

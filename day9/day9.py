@@ -13,16 +13,13 @@ if diagonal, direction next to tail, tail doesnt move
 visited = {}
 val = str((1, 2))
 
-head = Head()
-tail = Tail()
-
 
 class Head():
     def __init__(self) -> None:
         self.y = 0
         self.x = 0
 
-    def move(self, direction, movement, tail:Tail):
+    def move(self, direction, movement, tail):
         match direction:
             case "U":
                 self.y += movement
@@ -32,7 +29,6 @@ class Head():
                 self.x -= movement
             case "R":
                 self.x += movement
-        tail.move(direction, movement, self)
 
 
 class Tail():
@@ -67,7 +63,11 @@ class Tail():
             return
 
 
+head = Head()
+tail = Tail()
+
 
 for instruction in data:
-    head.move(instruction[0], int(instruction[1]), tail)
+    head.move(instruction[0], int(instruction[1]))
+    tail.move(instruction[0], int(instruction[1]), 1, head)
 print(len(visited))
