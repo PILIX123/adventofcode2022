@@ -32,3 +32,4 @@ i couldnt do it on the day it game out, so yeah taking my chance on day 10
 
 for some reason programming it in a OOP way makes sense to me...
 ok back at it we gonna try to make it work
+WOOOOO we almost there the rope is following the right path i just need to figure out how to count every square the tail moves
