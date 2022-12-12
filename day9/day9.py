@@ -93,7 +93,7 @@ class Tail():
 
                 if (self.y < head.y):
                     self.y += 1
-                elif (self.y > head.x):
+                elif (self.y > head.y):
                     self.y -= 1
 
                 if (prevx != self.x or self.x != prevx):
