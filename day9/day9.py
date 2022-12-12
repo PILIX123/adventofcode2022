@@ -42,19 +42,27 @@ class Tail():
         v_distance = (head.y-self.y)
         prevy = self.y
         prevx = self.x
+        l_coord = []
         match direction:
             case "U":
-                self.prevy = self.y
                 if (self.y+length >= head.y):
                     return
                 elif (self.y >= head.y - movement):
                     self.y += v_distance-length
                 else:
                     self.y += movement
+
                 if (self.x < head.x):
-                    self.x += movement if movement <= h_distance else h_distance
+                    self.x += 1
                 elif (self.x > head.x):
-                    self.x -= movement if movement <= -h_distance else -h_distance
+                    self.x -= 1
+
+                if (self.y != prevy or self.x != prevx):
+                    l_coord = [(self.x, y) for y in range(prevy+1, self.y + 1)]
+                    for coord in l_coord:
+                        visit = {str(coord): "visited"}
+                        visited.update(visit)
+
             case "D":
                 if (self.y-length <= head.y):
                     return
@@ -62,10 +70,19 @@ class Tail():
                     self.y -= (-v_distance)-length
                 else:
                     self.y -= movement
+
                 if (self.x < head.x):
-                    self.x += movement if movement <= h_distance else h_distance
+                    self.x += 1
                 elif (self.x > head.x):
-                    self.x -= movement if movement <= -h_distance else -h_distance
+                    self.x -= 1
+
+                if (self.y != prevy or self.x != prevx):
+                    l_coord = [(self.x, y)
+                               for y in range(prevy-1, self.y - 1, -1)]
+                    for coord in l_coord:
+                        visit = {str(coord): "visited"}
+                        visited.update(visit)
+
             case "R":
                 if (self.x+length >= head.x):
                     return
@@ -73,10 +90,17 @@ class Tail():
                     self.x += h_distance-length
                 else:
                     self.x += movement
+
                 if (self.y < head.y):
-                    self.y += movement if movement <= v_distance else v_distance
+                    self.y += 1
                 elif (self.y > head.x):
-                    self.y -= movement if movement <= -v_distance else -v_distance
+                    self.y -= 1
+
+                if (prevx != self.x or self.x != prevx):
+                    l_coord = [(x, self.y) for x in range(prevx+1, self.x + 1)]
+                    for coord in l_coord:
+                        visit = {str(coord): "visited"}
+                        visited.update(visit)
             case "L":
                 if (self.x-length <= head.x):
                     return
@@ -84,25 +108,28 @@ class Tail():
                     self.x -= (-h_distance)-length
                 else:
                     self.x -= movement
+
                 if (self.y < head.y):
-                    self.y += movement if movement <= v_distance else v_distance
-                elif (self.y > head.x):
-                    self.y -= movement if movement <= -v_distance else -v_distance
-        if (v_distance < 0):
-            traveledy = [y for y in range(prevy, self.y-1, -1)]
-        else:
-            traveledy = [y for y in range(prevy, self.y+1)]
-        if (h_distance < 0):
-            traveledx = [x for x in range(prevx, self.x-1, -1)]
-        else:
-            traveledx = [x for x in range(prevx, self.x+1)]
+                    self.y += 1
+                elif (self.y > head.y):
+                    self.y -= 1
+
+                if (prevx != self.x or self.x != prevx):
+                    l_coord = [(x, self.y)
+                               for x in range(prevx-1, self.x - 1, -1)]
+                    for coord in l_coord:
+                        visit = {str(coord): "visited"}
+                        visited.update(visit)
 
 
 head = Head()
 tail = Tail()
-
+visit = {str((tail.x, tail.y)): "visited"}
+visited.update(visit)
+number = 1
 for instruction in data:
     head.move(instruction[0], int(instruction[1]))
     tail.move(instruction[0], int(instruction[1]), 1, head)
+    number += 1
 
 print(len(visited))
