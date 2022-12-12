@@ -35,3 +35,7 @@ ok back at it we gonna try to make it work
 WOOOOO we almost there the rope is following the right path i just need to figure out how to count every square the tail moves
 AFTER SOOOOOO LONG OF WORKING ON IT IT WORKS
 IM GENIOUS AND OOP IS COOL
+
+##### part two
+
+sadly i fucked up and my length parameter do not do its job, so i need to re think the entire thing...

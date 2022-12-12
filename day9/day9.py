@@ -36,6 +36,8 @@ class Tail():
     def __init__(self) -> None:
         self.x = 0
         self.y = 0
+        self.distance = 0
+        self.movements = []
 
     def move(self, direction, movement, length, head: Head):
         h_distance = (head.x-self.x)
@@ -122,14 +124,39 @@ class Tail():
                         visited.update(visit)
 
 
+class Knot():
+    def __init__(self, head: Head) -> None:
+        self.x = 0
+        self.y = 0
+        self.Head = head
+
+
 head = Head()
 tail = Tail()
 visit = {str((tail.x, tail.y)): "visited"}
 visited.update(visit)
-number = 1
-for instruction in data:
-    head.move(instruction[0], int(instruction[1]))
-    tail.move(instruction[0], int(instruction[1]), 1, head)
-    number += 1
 
-print(len(visited))
+
+def part_one(length):
+    for instruction in data:
+        head.move(instruction[0], int(instruction[1]))
+        tail.move(instruction[0], int(instruction[1]), length, head)
+    return (len(visited))
+
+
+def part_two(length):
+    for instruction in data:
+        head.move(instruction[0], int(instruction[1]))
+        tail.move(instruction[0], int(instruction[1]), length, head)
+    return (len(visited))
+
+
+print(part_one(1))
+head = Head()
+tail = Tail()
+visited.clear()
+visit = {str((tail.x, tail.y)): "visited"}
+visited.update(visit)
+
+
+print(part_two(10))
