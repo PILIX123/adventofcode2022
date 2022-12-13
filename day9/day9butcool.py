@@ -1,4 +1,5 @@
-# AoC day 9 reddit.com/u/ElliotDG
+# AoC day 9 reddit.com/u/ElliotDG (https://www.reddit.com/r/adventofcode/comments/zgnice/comment/izq9wcn/?utm_source=share&utm_medium=web2x&context=3)
+
 
 class Knot:
     def __init__(self):
