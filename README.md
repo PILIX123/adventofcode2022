@@ -43,3 +43,7 @@ i quit on part two, thanks reddit for giving me the solution, i might look into 
 
 Thank reddit user u/ElliotDG
 [This is the comment where i got it from](https://www.reddit.com/r/adventofcode/comments/zgnice/comment/izq9wcn/?utm_source=share&utm_medium=web2x&context=3)
+
+#### day 10
+
+i guess ill look into this one
