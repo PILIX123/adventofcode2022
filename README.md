@@ -40,3 +40,5 @@ IM GENIOUS AND OOP IS COOL
 
 sadly i fucked up and my length parameter do not do its job, so i need to re think the entire thing...
 i quit on part two, thanks reddit for giving me the solution, i might look into it later this winter but for rn i have enough of this damn rope
+
+Thank reddit user u/ElliotDG
