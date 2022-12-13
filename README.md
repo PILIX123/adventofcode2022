@@ -30,15 +30,15 @@ i couldnt do it on the day it game out, so yeah taking my chance on day 10
 
 ##### part one
 
-for some reason programming it in a OOP way makes sense to me...
-ok back at it we gonna try to make it work
-WOOOOO we almost there the rope is following the right path i just need to figure out how to count every square the tail moves
-AFTER SOOOOOO LONG OF WORKING ON IT IT WORKS
+for some reason programming it in a OOP way makes sense to me...  
+ok back at it we gonna try to make it work  
+WOOOOO we almost there the rope is following the right path i just need to figure out how to count every square the tail moves  
+AFTER SOOOOOO LONG OF WORKING ON IT IT WORKS  
 IM GENIOUS AND OOP IS COOL
 
 ##### part two
 
-sadly i fucked up and my length parameter do not do its job, so i need to re think the entire thing...
+sadly i fucked up and my length parameter do not do its job, so i need to re think the entire thing...  
 i quit on part two, thanks reddit for giving me the solution, i might look into it later this winter but for rn i have enough of this damn rope
 
 Thank reddit user u/ElliotDG
