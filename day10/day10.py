@@ -4,10 +4,25 @@ actions = [lines.split(" ")
 cycle = 1
 index = 0
 register = 1
-currentcyle = 0
+currentcyle = []
+numbers = 0
 while cycle < 221:
-    if actions[index] == "noop":
-        index += 1
-    if actions[index] == "addx":
-        currentcyle = cycle
+    if actions[index][0] == 'noop':
+        if len(currentcyle) == 1:
+            index += 1
+            currentcyle.clear()
+            continue
+        else:
+            currentcyle.append(cycle)
+    if actions[index][0] == 'addx':
+        if len(currentcyle) == 2:
+            register += int(actions[index][1])
+            index += 1
+            currentcyle.clear()
+            continue
+        else:
+            currentcyle.append(cycle)
+    if cycle % 40 == 20:
+        numbers += cycle*register
     cycle += 1
+print(numbers)
