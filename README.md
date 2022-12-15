@@ -46,4 +46,5 @@ Thank reddit user u/ElliotDG
 
 #### day 10
 
-i guess ill look into this one
+i guess ill look into this one  
+WOOOOO we did it, i didnt think this setup would work
