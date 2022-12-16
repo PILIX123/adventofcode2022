@@ -6,6 +6,7 @@ index = 0
 register = 1
 currentcyle = []
 numbers = 0
+final = 0
 while cycle < 241:
     if actions[index][0] == 'noop':
         if len(currentcyle) == 1:
@@ -30,5 +31,7 @@ while cycle < 241:
         print(' ', end='')
     if (cycle % 40 == 0):
         print('')
+    if (cycle == 220):
+        final = numbers
     cycle += 1
-print(numbers)
+print(final)
