@@ -46,5 +46,11 @@ Thank reddit user u/ElliotDG
 
 #### day 10
 
+##### part one
+
 i guess ill look into this one  
 WOOOOO we did it, i didnt think this setup would work
+
+##### part two
+
+i didnt think i was gonna be able to do it this fast
