@@ -11,8 +11,8 @@ monkeys = {
 
 
 class Monkey:
-    def __init__(self, items: list, trueMonkey, falseMonkey, action: str, testValue: int) -> None:
-        self.items = items
+    def __init__(self, name, trueMonkey, falseMonkey, action: str, testValue: int) -> None:
+        self.name = name
         self.trueMonkey = trueMonkey
         self.falseMonkey = falseMonkey
         self.action = action.split(" ")
@@ -21,78 +21,78 @@ class Monkey:
         self.inspection = 0
 
     def bored(self):
-        self.items[0] = int(self.items[0]/3)
+        monkeys[self.name][0] = int(monkeys[self.name][0]/3)
 
     def test(self):
-        return self.items[0] % self.testValue == 0
+        return monkeys[self.name][0] % self.testValue == 0
 
     def throw(self, resultTest: bool):
         if resultTest:
-            monkeys[self.trueMonkey].append(self.items[0])
+            monkeys[self.trueMonkey].append(monkeys[self.name][0])
         else:
-            monkeys[self.falseMonkey].append(self.items[0])
-        self.items.pop(0)
+            monkeys[self.falseMonkey].append(monkeys[self.name][0])
+        monkeys[self.name].pop(0)
 
     def operation(self):
-        number = self.items[0] if "old" in self.action else int(self.action[1])
+        number = monkeys[self.name][0] if "old" in self.action else int(
+            self.action[1])
         if "*" in self.action:
-            self.items[0] = self.items[0]*number
+            monkeys[self.name][0] = monkeys[self.name][0]*number
         elif "+" in self.action:
-            self.items[0] = self.items[0]+number
+            monkeys[self.name][0] = monkeys[self.name][0]+number
 
-    def turn(self, items):
-        self.items = items
-        for _ in range(len(self.items)):
+    def turn(self):
+        for _ in range(len(monkeys[self.name])):
             self.operation()
             self.inspection += 1
             self.bored()
             self.throw(self.test())
 
-    def turnv2(self, items):
-        self.items = items
-        for _ in range(len(self.items)):
+    def turnv2(self):
+        for _ in range(len(monkeys[self.name])):
             self.operation()
             self.inspection += 1
             self.throw(self.test())
 
 
-monkey0 = Monkey(monkeys['monkey0'], 'monkey1', 'monkey7', 'old * 3', 13)
-monkey1 = Monkey(monkeys['monkey1'], 'monkey7', 'monkey5', 'old + 8', 2)
-monkey2 = Monkey(monkeys['monkey2'], 'monkey3', 'monkey4', 'old * old', 7)
-monkey3 = Monkey(monkeys['monkey3'], 'monkey4', 'monkey6', 'old + 2', 17)
-monkey4 = Monkey(monkeys['monkey4'], 'monkey6', 'monkey0', 'old + 3', 5)
-monkey5 = Monkey(monkeys['monkey5'], 'monkey2', 'monkey3', 'old * 17', 11)
-monkey6 = Monkey(monkeys['monkey6'], 'monkey1', 'monkey0', 'old + 6', 3)
-monkey7 = Monkey(monkeys['monkey7'], 'monkey2', 'monkey5', 'old + 1', 19)
+monkey0 = Monkey('monkey0', 'monkey1', 'monkey7', 'old * 3', 13)
+monkey1 = Monkey('monkey1', 'monkey7', 'monkey5', 'old + 8', 2)
+monkey2 = Monkey('monkey2', 'monkey3', 'monkey4', 'old * old', 7)
+monkey3 = Monkey('monkey3', 'monkey4', 'monkey6', 'old + 2', 17)
+monkey4 = Monkey('monkey4', 'monkey6', 'monkey0', 'old + 3', 5)
+monkey5 = Monkey('monkey5', 'monkey2', 'monkey3', 'old * 17', 11)
+monkey6 = Monkey('monkey6', 'monkey1', 'monkey0', 'old + 6', 3)
+monkey7 = Monkey('monkey7', 'monkey2', 'monkey5', 'old + 1', 19)
 monkeyList = [monkey0, monkey1, monkey2,
               monkey3, monkey4, monkey5, monkey6, monkey7]
 
 
 def part_one():
     for _ in range(20):
-        monkey0.turn(monkeys['monkey0'])
-        monkey1.turn(monkeys['monkey1'])
-        monkey2.turn(monkeys['monkey2'])
-        monkey3.turn(monkeys['monkey3'])
-        monkey4.turn(monkeys['monkey4'])
-        monkey5.turn(monkeys['monkey5'])
-        monkey6.turn(monkeys['monkey6'])
-        monkey7.turn(monkeys['monkey7'])
+        monkey0.turn()
+        monkey1.turn()
+        monkey2.turn()
+        monkey3.turn()
+        monkey4.turn()
+        monkey5.turn()
+        monkey6.turn()
+        monkey7.turn()
     inspections = [monkey.inspection for monkey in monkeyList]
     inspections.sort()
     return (inspections[6]*inspections[7])
 
 
+# print(part_one())
 def part_two():
     for _ in range(10000):
-        monkey0.turnv2(monkeys['monkey0'])
-        monkey1.turnv2(monkeys['monkey1'])
-        monkey2.turnv2(monkeys['monkey2'])
-        monkey3.turnv2(monkeys['monkey3'])
-        monkey4.turnv2(monkeys['monkey4'])
-        monkey5.turnv2(monkeys['monkey5'])
-        monkey6.turnv2(monkeys['monkey6'])
-        monkey7.turnv2(monkeys['monkey7'])
+        monkey0.turnv2()
+        monkey1.turnv2()
+        monkey2.turnv2()
+        monkey3.turnv2()
+        monkey4.turnv2()
+        monkey5.turnv2()
+        monkey6.turnv2()
+        monkey7.turnv2()
     inspections = [monkey.inspection for monkey in monkeyList]
     inspections.sort()
     return (inspections[6]*inspections[7])
@@ -110,13 +110,13 @@ monkeys = {
     'monkey7': [91]
 }
 
-monkey0 = Monkey(monkeys['monkey0'], 'monkey1', 'monkey7', 'old * 3', 13)
-monkey1 = Monkey(monkeys['monkey1'], 'monkey7', 'monkey5', 'old + 8', 2)
-monkey2 = Monkey(monkeys['monkey2'], 'monkey3', 'monkey4', 'old * old', 7)
-monkey3 = Monkey(monkeys['monkey3'], 'monkey4', 'monkey6', 'old + 2', 17)
-monkey4 = Monkey(monkeys['monkey4'], 'monkey6', 'monkey0', 'old + 3', 5)
-monkey5 = Monkey(monkeys['monkey5'], 'monkey2', 'monkey3', 'old * 17', 11)
-monkey6 = Monkey(monkeys['monkey6'], 'monkey1', 'monkey0', 'old + 6', 3)
-monkey7 = Monkey(monkeys['monkey7'], 'monkey2', 'monkey5', 'old + 1', 19)
+monkey0 = Monkey('monkey0', 'monkey1', 'monkey7', 'old * 3', 13)
+monkey1 = Monkey('monkey1', 'monkey7', 'monkey5', 'old + 8', 2)
+monkey2 = Monkey('monkey2', 'monkey3', 'monkey4', 'old * old', 7)
+monkey3 = Monkey('monkey3', 'monkey4', 'monkey6', 'old + 2', 17)
+monkey4 = Monkey('monkey4', 'monkey6', 'monkey0', 'old + 3', 5)
+monkey5 = Monkey('monkey5', 'monkey2', 'monkey3', 'old * 17', 11)
+monkey6 = Monkey('monkey6', 'monkey1', 'monkey0', 'old + 6', 3)
+monkey7 = Monkey('monkey7', 'monkey2', 'monkey5', 'old + 1', 19)
 
 print(part_two())

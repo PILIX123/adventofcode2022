@@ -61,3 +61,7 @@ i didnt think i was gonna be able to do it this fast
 
 this wasnt too hard, and the monkeys arent too annoying to deal with  
 says i before starting part 2
+
+##### part two
+
+well i talked to fast, i dont have the brain to optimise my own slution but thanks to [u/West-Release-4842](https://www.reddit.com/user/West-Release-4842/) on reddit, [from this comment](https://www.reddit.com/r/adventofcode/comments/zifqmh/comment/j0ci41b/?utm_source=share&utm_medium=web2x&context=3), i managed to make it run somehow he made in like 147 ms for both part
