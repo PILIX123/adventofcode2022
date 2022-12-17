@@ -54,3 +54,10 @@ WOOOOO we did it, i didnt think this setup would work
 ##### part two
 
 i didnt think i was gonna be able to do it this fast
+
+#### day 11
+
+##### part one
+
+this wasnt too hard, and the monkeys arent too annoying to deal with  
+says i before starting part 2
